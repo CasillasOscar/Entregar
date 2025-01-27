@@ -1,5 +1,6 @@
 package com.prueba.primerspring.coche;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,11 +8,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/coches")
 public class ControllerCoche {
 
+    @Autowired
+    private Coche coche;
+
     @GetMapping("/coche")
     public ResponseEntity<Coche> obtenerCoche(){
-
-        Coche c = new Coche("BMW", "Negro", 1200);
-        return ResponseEntity.ok(c);
+        return ResponseEntity.ok(coche);
     }
 
     @PostMapping("/coche")

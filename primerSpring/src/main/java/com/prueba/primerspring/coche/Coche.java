@@ -1,17 +1,32 @@
 package com.prueba.primerspring.coche;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Coche {
 
-    String marca;
-    String color;
-    Integer peso;
+    private String marca;
+    private String color;
+    private Integer peso;
+    private Motor motor;
 
     public Coche(){};
 
-    public Coche(String marca, String color, Integer peso){
-        this.marca = marca;
-        this.color = color;
-        this.peso = peso;
+    @Autowired
+    public Coche(Motor motor){
+        this.marca = "BMW";
+        this.color = "Negro";
+        this.peso = 1200;
+        this.motor = motor;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
     }
 
     public String getMarca() {
@@ -44,6 +59,7 @@ public class Coche {
                 "marca='" + marca + '\'' +
                 ", color='" + color + '\'' +
                 ", peso=" + peso +
+                ", motor=" + motor +
                 '}';
     }
 }
